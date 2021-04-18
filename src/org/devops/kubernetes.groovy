@@ -3,7 +3,7 @@ package org.devops
 
 //封装HTTP请求
 def HttpReq(reqType,reqUrl,reqBody){
-    def apiServer = "https://124.70.55.171:6443/apis/apps/v1"
+    def apiServer = "https://192.168.0.77:6443/apis/apps/v1"
     withCredentials([string(credentialsId: 'kubernetes-token', variable: 'kubernetestoken')]) {
       result = httpRequest customHeaders: [[maskValue: true, name: 'Authorization', value: "Bearer ${kubernetestoken}"],
                                            [maskValue: false, name: 'Content-Type', value: 'application/yaml'], 
