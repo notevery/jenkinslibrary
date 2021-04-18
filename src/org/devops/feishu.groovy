@@ -52,12 +52,12 @@ def sendFeishu(href_url, href_msg, message){
                             [
                                 {
                                     "tag": "text",
-                                    "text": $message
+                                    "text": "$message"
                                 },
                                 {
                                     "tag": "a",
-                                    "text": $href_msg,
-                                    "href": $href_url
+                                    "text": "$href_msg",
+                                    "href": "$href_url"
                                 }
                             ]
                         ]
