@@ -1,11 +1,23 @@
 package org.devops
 
-def FeiShuHTTPRequest(message,href_url,feishuUrl){
-      result = httpRequest customHeaders: [[maskValue: false, name: 'Content-Type', value: 'application/json']],
-                httpMode: "POST", 
-                consoleLogResponseBody: true,
-                ignoreSslErrors: true, 
-                requestBody: '''{
+def sendFeishu(status){
+    if (status == "success") {
+        message="构建并部署成功，点击查看部署后的效果"
+        href_url="${env.ARKIDV2DEV_PUBLIC_URL}"
+    } else if(status == "pending"){
+        message="开始构建，点击查看构建过程"
+        href_url="${env.BUILD_URL}"
+    } else {
+        message="${this_stage}阶段失败，点击查看具体日志"
+        href_url="${env.BUILD_URL}"
+    }
+
+    sh """
+        curl -X POST \
+        ${env.FEISHU_ENTRYPOINT} \
+        -H "content-type: application/json" \
+        -d \
+        '{
             "msg_type": "post",
             "content": {
                 "post": {
@@ -19,16 +31,14 @@ def FeiShuHTTPRequest(message,href_url,feishuUrl){
                                 },
                                 {
                                     "tag": "a",
-                                    "text": message,
-                                    "href": href_url
+                                    "text": "$message",
+                                    "href": "$href_url"
                                 }
                             ]
                         ]
                     }
                 }
             }
-        }''',
-                url: feishuUrl
-                //quiet: true
-    return result
+        }'
+    """
 }
