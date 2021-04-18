@@ -1,5 +1,15 @@
 package org.devops
 
+// global env
+//env.FEISHU_ENTRYPOINT
+//env.ARKIDV2DEV_PUBLIC_URL
+
+// job env
+//env.REPO_HTTP_URL
+//env.REPO_NAME
+//env.GIT_BRANCH
+
+
 def checkBranchFeishu(status){
     gitBranch = "${env.GIT_BRANCH}"
     gitRepoName = "${env.REPO_NAME}"
