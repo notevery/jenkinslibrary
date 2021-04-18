@@ -4,7 +4,7 @@ def FeiShuHTTPRequest(message,href_url,feishuUrl){
       result = httpRequest httpMode: "POST", 
                 consoleLogResponseBody: true,
                 ignoreSslErrors: true, 
-                requestBody: """{
+                requestBody: '''{
             "msg_type": "post",
             "content": {
                 "post": {
@@ -26,7 +26,7 @@ def FeiShuHTTPRequest(message,href_url,feishuUrl){
                     }
                 }
             }
-        }""",
+        }''',
                 url: feishuUrl
                 //quiet: true
     return result
