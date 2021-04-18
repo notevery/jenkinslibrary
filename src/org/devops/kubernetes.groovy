@@ -44,3 +44,10 @@ def GetDeployment(nameSpace,deployName){
     response = HttpReq('GET',apiUrl,'')
     return response
 }
+
+//获取Deployments
+def GetDeployment(nameSpace){
+    apiUrl = "namespaces/${nameSpace}/deployments/"
+    response = HttpReq('GET',apiUrl,'')
+    return response
+}
