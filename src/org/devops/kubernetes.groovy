@@ -46,7 +46,7 @@ def GetDeployment(nameSpace,deployName){
 }
 
 //获取Deployments
-def GetDeployment(nameSpace){
+def GetDeployments(nameSpace){
     apiUrl = "namespaces/${nameSpace}/deployments/"
     response = HttpReq('GET',apiUrl,'')
     return response
