@@ -1,7 +1,8 @@
 package org.devops
 
 def FeiShuHTTPRequest(message,href_url,feishuUrl){
-      result = httpRequest httpMode: "POST", 
+      result = httpRequest customHeaders: [[maskValue: false, name: 'Content-Type', value: 'application/json']],
+                httpMode: "POST", 
                 consoleLogResponseBody: true,
                 ignoreSslErrors: true, 
                 requestBody: '''{
